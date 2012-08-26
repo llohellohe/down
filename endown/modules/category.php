@@ -1,18 +1,50 @@
+<?php 
+require_once(dirname(__FILE__)."/../../lib/DB.php");
+require_once(dirname(__FILE__)."/../../lib/EdException.php");
+
+
+
+try{
+
+$db=new DB();
+
+$showList=$db->getShowRootList();
+
+}catch(ErrorException $e){
+  go404();
+}
+
+
+
+
+$db->close();
+?>
+
+
+
+
 <div id="lmb">
 <h2 class="lbt">Category</h2>
 <ul id="cate">
-<li><a href="#">MP3 & Audio</a></li>
-<li><a href="#">DVD & Video</a></li>
-<li><a href="#">Security</a></li>
-<li><a href="#">Internet</a></li>
-<li><a href="#">Graphics & Design</a></li>
-<li><a href="#">Software Developer</a></li>
-<li><a href="#">Chat</a></li>
-<li><a href="#">System</a></li>
-<li><a href="#">Customize your PC</a></li>
-<li><a href="#">Games</a></li>
-<li><a href="#">Business & Management</a></li>
-<li><a href="#">Home & Educations</a></li>
+<?php
+	foreach ($showList as $root) {
+		echo "<li><a href='categories.php?id=".$root['id']."''>".$root['name']."</a></li>";
+		if($rootCid==$root['id']&&count($childList)>0){
+?>
+		<ul id="cate1">
+		<?php
+			foreach ($childList as $child) {
+		?>
+		<li><a href="child-category.php?id=<?php echo $child['id'];?>">&gt; <?php echo $child['name'];?></a></li>
+		<?php
+			}
+
+		?>
+		</ul>
+<?php
+		}
+	}
+?>
 </ul>
 <img src="images/1_13.jpg" />
 </div>

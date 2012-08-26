@@ -1,24 +1,41 @@
 <?php
 require_once(dirname(__FILE__)."/../lib/DB.php");
 
+require_once(dirname(__FILE__)."/../lib/EdException.php");
+
+
+$id=$_GET["id"];
+$page=$_GET["page"];
+
+try{
+
 $db=new DB();
+$software=$db->getSoftWare($id);
 
-$ret=$db->getSoftWare(1);
-
-
-
-foreach ($ret as $key) {
-  echo $key;
+if($id==1){
+$latestSoftware=$db->getSoftWare(9);
 }
+}catch(ErrorException $e){
+  go404();
+}
+
+$db->close();
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Download Free 软件名称, 软件名称 版本号 Download</title>
-<meta name="keywords" content="软件名称, Download软件名称, 软件名称 版本号 Download" />
-<meta name="description" content="调取软件短描述前200个字符" />
+<title>Download Free 
+<?php
+
+echo $software['name'].",".$software['name'].$software['version']; 
+
+?> 
+
+Download</title>
+<meta name="keywords" content="<?php echo $software['name'].",Download ".$software['name']." ".$software['name']." ".$software['version']." Download"?>" />
+<meta name="description" content="<?php echo $software['summary']?>" />
 <link rel="stylesheet" type="text/css" href="css/public.css">
 </head>
 
@@ -26,7 +43,7 @@ foreach ($ret as $key) {
 
 <div id="top">
 <div id="frame">
-<div class="tl"><a href="#">DownladV.com, Your free 软件名称 Software Download Portal.</a></div>
+<div class="tl"><a href="#">DownladV.com, Your free <?php echo $software['name']?> Software Download Portal.</a></div>
 <div class="tr"><a href="#"><img src="images/1_02.jpg" /></a><a href="#"><img src="images/1_03.jpg" /></a></div>
 <div id="tnr"><a href="http://www.downloadv.com"><h1>DownloadV</h1></a>
 <div class="tr"><script type="text/javascript"><!--
@@ -78,7 +95,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </div>
 <div id="right" class="tl">
 <div id="rmb">
-<div id="rbt"><h3>Free Download VSO ConvertXtoDVD <span class="hs">2.2.3</span></h3>
+<div id="rbt"><h3>Free Download <?php echo $software['name']?> <span class="hs"><?php echo $software['version']?></span></h3>
 </div>
 <div id="rnr">
 <hr class="x">
@@ -104,18 +121,22 @@ If your download does not start ,Please click the following link:
 </div>
 
 <div id="mdown">
-<div class="mdr"><div class="dl"><img src="images/3_07.jpg" /><a href="#">Download Link</a></div> <div class="dr1"><a href="#">Report Link Error</a></div></div>
+<div class="mdr"><div class="dl"><img src="images/3_07.jpg" /><a href="<?php echo $software['link']?>">Download Link</a></div> <div class="dr1"><a href="#">Report Link Error</a></div></div>
 </div>
 
+<?php
+if($latestSoftware){
+?>
 <div id="rmb">
 <div id="rbt" style="line-height:20px;"><h3>&nbsp;</h3>
 </div>
 <div id="rnr">
-<p class="rwz">VOS ConvertXtoDVD 2.2.3 is not the latest version, we recommend you download <br />
-  <a href="#">latest VSO ConvertXtoDVD</a> (version:2.3.1)</p> 
+<p class="rwz"><?php echo $software['name']?> is not the latest version, we recommend you download <br />
+  <a href="detail.php?id=9">latest <?php echo $latestSoftware['name']?></a> (version:<?php echo $latestSoftware['version']?>)</p> 
 </div>
 <img src="images/1_19.jpg" />
 </div>
+<?php } ?>
 
 <div id="rmb">
 <div id="rbt"><h3>Programs related to <span class="hs">VSO ConvertXtoDVD</span></h3>
@@ -145,11 +166,7 @@ CCleaner is the ideal tool to erase all traces of your e-visits ...
 
 </div>
 
-<div id="key">
-<strong>Popular KeyWords:</strong> <a href="#">installer</a> | <a href="#">Style P</a> | <a href="#">Safari</a> | <a href="#">Juke box</a> | <a href="#">Media Manager</a> | <a href="#">Guy Game</a> | <a href="#">avi to dvd</a> | <a href="#">Google Earth</a> | <a href="#">avi to dvd</a> | <a href="#">Google Earth</a> | <a href="#">outlook</a> | <a href="#">cd clode</a> | <a href="#">Corel DRAW</a> | <a href="#">Big Fish Game</a> | <a href="#">pim</a> | <a href="#">movie maker</a> | <a href="#">Virtual PC</a></div>
-
-<div id="foot">Copyright <a href="#">DownloadV.com</a> &copy; 2001 - 2011  All rights reserved.</div>
-</div>
+<?php require_once('modules/footer.php');?>
 
 
 <div class="clear"></div>

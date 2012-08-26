@@ -16,6 +16,8 @@ $software=$db->getSoftWare($id);
   go404();
 }
 
+$db->close();
+
 ?>
 
 
@@ -59,16 +61,7 @@ google_ad_height = 60;
 src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </script></div>
 </div>
-<div id="nav">
-<ul>
-<li><a href="#" class="hover">Home</a></li>
-<li><a href="#">Categories</a></li>
-<li><a href="#">New releases</a></li>
-<li><a href="#">Most popular</a></li>
-<li><a href="#">Our picks</a></li>
-<li><a href="#">Submit your software</a></li>
-</ul>
-</div>
+<?php $curNav="new";require('modules/nav.php')?>
 <div id="search">
   <form id="sform" name="form1" method="post" action="">
   <input type="text" name="textfield" id="stext" />
@@ -175,7 +168,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </div>
 
 <div id="mdown">
-<div class="mdr"><p><?php echo $software['name']?></p> <div class="dr"><img src="images/3_07.jpg" /><a href="#">Download</a></div></div>
+<div class="mdr"><p><?php echo $software['name']?></p> <div class="dr"><img src="images/3_07.jpg" /><a href="download.php?id=<?php echo $id?>">Download</a></div></div>
 </div>
 
 <div id="rmb">
@@ -190,7 +183,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </div>
 
 <div id="rmb">
-<div id="rbt"><h3>Programs related to <span class="hs">VSO ConvertXtoDVD</span></h3>
+<div id="rbt"><h3>Programs related to <span class="hs"><?php echo $software['name']?></span></h3>
 </div>
 <div id="rnr">
 <hr class="x">
@@ -217,11 +210,7 @@ CCleaner is the ideal tool to erase all traces of your e-visits ...
 
 </div>
 
-<div id="key">
-<strong>Popular KeyWords:</strong> <a href="#">installer</a> | <a href="#">Style P</a> | <a href="#">Safari</a> | <a href="#">Juke box</a> | <a href="#">Media Manager</a> | <a href="#">Guy Game</a> | <a href="#">avi to dvd</a> | <a href="#">Google Earth</a> | <a href="#">avi to dvd</a> | <a href="#">Google Earth</a> | <a href="#">outlook</a> | <a href="#">cd clode</a> | <a href="#">Corel DRAW</a> | <a href="#">Big Fish Game</a> | <a href="#">pim</a> | <a href="#">movie maker</a> | <a href="#">Virtual PC</a></div>
-
-<div id="foot">Copyright <a href="#">DownloadV.com</a> &copy; 2001 - 2011  All rights reserved.</div>
-</div>
+<?php require_once('modules/footer.php');?>
 
 
 <div class="clear"></div>

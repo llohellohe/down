@@ -29,16 +29,7 @@ google_ad_height = 60;
 src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </script></div>
 </div>
-<div id="nav">
-<ul>
-<li><a href="#" class="hover">Home</a></li>
-<li><a href="#">Categories</a></li>
-<li><a href="#">New releases</a></li>
-<li><a href="#">Most popular</a></li>
-<li><a href="#">Our picks</a></li>
-<li><a href="#">Submit your software</a></li>
-</ul>
-</div>
+<?php $curNav="home";require('modules/nav.php')?>
 <div id="search">
   <form id="sform" name="form1" method="post" action="">
   <input type="text" name="textfield" id="stext" />
