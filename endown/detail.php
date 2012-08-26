@@ -32,15 +32,19 @@ echo $software['name'].",".$software['name'].$software['version'];
 ?> 
 
 Download</title>
-<meta name="keywords" content="软件名称, Download软件名称, 软件名称 版本号 Download" />
-<meta name="description" content="Free 软件名称 Download,软件名称 版本号 Download" />
+
+
+<meta name="keywords" 
+content ="<?php echo $software['name'].",Download ".$software['name']." ".$software['name']." ".$software['version']." Download"?>" />
+<meta name="description" content="Free <?php echo $software['name']." Download, ".$software['name']." ".$software['version']?> Download" />
+
 <link rel="stylesheet" type="text/css" href="css/public.css">
 </head>
 
 <body>
 <div id="top">
 <div id="frame">
-<div class="tl"><a href="#">DownladV.com, Your free 软件名称 Download Portal.</a></div>
+<div class="tl"><a href="#">DownladV.com, Your free <?php echo $software['name'] ?> Download Portal.</a></div>
 <div class="tr"><a href="#"><img src="images/1_02.jpg" /></a><a href="#"><img src="images/1_03.jpg" /></a></div>
 <div id="tnr"><a href="http://www.downloadv.com"><h1>DownloadV</h1></a>
 <div class="tr"><script type="text/javascript"><!--
@@ -126,7 +130,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </div>
 <div id="right" class="tl">
 <div id="rmb">
-<div id="rbt"><h3>VSO ConvertXtoDVD <span class="hs">2.2.3</span></h3>
+<div id="rbt"><h3><?php echo $software['name']?> <span class="hs"><?php echo $software['version']?></span></h3>
 </div>
 <div id="rnr">
 <hr class="x">
@@ -144,7 +148,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </script>
 </div>
 </div>
-<div class="mc">Free ConvertXtoDVD download-Burn your internet movie files to DVD</div>
+<div class="mc">Free <?php echo $software['name']." ".$software['summary'];?></div>
 <img src="images/1_19.jpg" />
 </div>
 
@@ -171,16 +175,15 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </div>
 
 <div id="mdown">
-<div class="mdr"><p>VSO ConvertXtoDVD</p> <div class="dr"><img src="images/3_07.jpg" /><a href="#">Download</a></div></div>
-<div class="mdr"><p>Japanese language park</p> <div class="dr"><img src="images/3_07.jpg" /><a href="#">Download</a></div></div>
+<div class="mdr"><p><?php echo $software['name']?></p> <div class="dr"><img src="images/3_07.jpg" /><a href="#">Download</a></div></div>
 </div>
 
 <div id="rmb">
-<div id="rbt"><h3><span class="hs">Description of</span> VSO ConvertXtoDVD</h3>
+<div id="rbt"><h3><span class="hs">Description of</span> <?php echo $software['name']?></h3>
 </div>
 <div id="rnr">
 <hr class="x">
-<p>Video Converter before, can take simple steps to convert your video to Flash files (SWF and FLV) fast with excellent performance, and speed up your video hosting and sharing business over the Internet. It is quite easy-to-use but powerful, supports almost all popular video formats; gives you full control over the converting process; free to customize different video, audio settings and output files; provides advanced video editing functions; generates thumbnail image; offers various playback skins; and automatically creates an adapted Flash Video player (SWF) and HTML page to play the outputting Flash Video files progressively. Video Converter before, can take simple steps to convert your video to Flash files (SWF and FLV) fast with excellent performance, and speed up your video hosting and sharing business over the Internet.offers various playback skins; and automatically creates an adapted Flash Video player (SWF) and HTML page to play the outputting Flash Video files progressively. 
+<?php echo $software['desc']?>
 </p> 
 </div>
 <img src="images/1_19.jpg" />

@@ -14,9 +14,13 @@ class DB
 
 	function getSoftWare($id){
 
-	  $query = "SELECT * FROM software where id=".$id;  
+	  return $this->queryDb("SELECT * FROM software where id=".$id);
+	}
+
+
+	function queryDb($query){
+
 	  $result = mysql_query($query);
-	  ## or die("Query failed");  
 
       $record= mysql_fetch_array($result, MYSQL_ASSOC);   
 		 
@@ -26,6 +30,16 @@ class DB
 
 
 	  return $record;
+
 	}
+
+
+	function getCategory($id){
+	  return $this->queryDb("SELECT * FROM category where id=".$id);
+	}
+
+	
+
+
 }
 ?>

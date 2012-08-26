@@ -11,10 +11,10 @@ function handleError($errno, $errstr, $errfile, $errline, array $errcontext)
 
 
 function go404(){
-	 require('404.php'); 
-     @header('HTTP/1.1 404 Not Found'); 
-     @header('Status: 404 Not Found'); 
-     exit; 
+	# require('404.php'); 
+    # @header('HTTP/1.1 404 Not Found'); 
+    # @header('Status: 404 Not Found'); 
+    # exit; 
 }
-set_error_handler('handleError')
+#set_error_handler('handleError')
 ?>
